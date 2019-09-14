@@ -24,7 +24,7 @@ public class OneAttackController
     public void test(String propertyName, String attack, String power)
     {
         AttackChanged attackChanged = get(propertyName);
-        if(Objects.nonNull(attackChanged)) attackChanged.consume(attack, power);
+        if (Objects.nonNull(attackChanged)) attackChanged.consume(attack, power);
     }
 
     private AttackChanged get(String propertyName)

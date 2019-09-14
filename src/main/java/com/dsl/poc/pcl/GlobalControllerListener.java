@@ -4,7 +4,6 @@ import com.dsl.poc.AttackChanged;
 import org.springframework.stereotype.Component;
 
 import java.beans.PropertyChangeSupport;
-import java.util.function.BiConsumer;
 
 @Component
 public class GlobalControllerListener
@@ -28,9 +27,9 @@ public class GlobalControllerListener
         support.removePropertyChangeListener(globalControllerPCL);
     }
 
-    public void setFirePropertyChange(String propertyName, BiConsumer<String, String> biConsumer)
+    public void setFirePropertyChange(String propertyName, AttackChanged attackChanged)
     {
-        support.firePropertyChange(propertyName, null, biConsumer);
+        support.firePropertyChange(propertyName, null, attackChanged);
     }
 
     public AttackChanged fireProperty(String propertyName)

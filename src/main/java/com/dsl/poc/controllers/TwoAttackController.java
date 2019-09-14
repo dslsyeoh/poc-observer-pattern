@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
-import java.util.function.BiConsumer;
 
 @Component
 public class TwoAttackController
@@ -24,7 +23,7 @@ public class TwoAttackController
     public void test(String propertyName, String attack, String power)
     {
         AttackChanged attackChanged = get(propertyName);
-        if(Objects.nonNull(attackChanged)) attackChanged.consume(attack, power);
+        if (Objects.nonNull(attackChanged)) attackChanged.consume(attack, power);
     }
 
     private AttackChanged get(String propertyName)
