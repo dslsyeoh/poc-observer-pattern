@@ -44,6 +44,7 @@ class GlobalAttackController
                 break;
             default:
                 System.out.println(power + "cannot be identified");
+                break;
         }
     }
 
