@@ -5,18 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 @Component
-public class TwoAttackController
+public class KingKongController
 {
     @Autowired
     private GlobalAttackController globalAttackController;
 
-    public void register()
+    public void register(String... attacks)
     {
         globalAttackController.addPropertyChangeListener();
-        globalAttackController.registerAttack("TwoAttackController_punch");
-        globalAttackController.registerAttack("TwoAttackController_kick");
+        Stream.of(attacks).forEach(globalAttackController::registerAttack);
         globalAttackController.removePropertyChangeListener();
     }
 

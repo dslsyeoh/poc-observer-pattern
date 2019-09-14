@@ -5,19 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
-import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
 @Component
-public class OneAttackController
+public class OnePunchManController
 {
     @Autowired
     private GlobalAttackController globalAttackController;
 
-    public void register()
+    public void register(String... attacks)
     {
         globalAttackController.addPropertyChangeListener();
-        globalAttackController.registerAttack("OneAttackController_punch");
-        globalAttackController.registerAttack("OneAttackController_kick");
+        Stream.of(attacks).forEach(globalAttackController::registerAttack);
         globalAttackController.removePropertyChangeListener();
     }
 
