@@ -18,12 +18,7 @@ class GlobalAttackController
 
     void registerAttack(String propertyName)
     {
-        globalControllerListener.setFirePropertyChange(propertyName, this::handleAttack);
-    }
-
-    private void handleAttack(String attack, String power)
-    {
-        identifyAttackLevel(attack, power);
+        globalControllerListener.setFirePropertyChange(propertyName, this::identifyAttackLevel);
     }
 
     private void identifyAttackLevel(String attack, String power)
