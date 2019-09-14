@@ -1,5 +1,6 @@
 package com.dsl.poc.pcl;
 
+import com.dsl.poc.AttackChanged;
 import org.springframework.stereotype.Component;
 
 import java.beans.PropertyChangeSupport;
@@ -32,8 +33,8 @@ public class GlobalControllerListener
         support.firePropertyChange(propertyName, null, biConsumer);
     }
 
-    public BiConsumer<String, String> fireProperty(String propertyName)
+    public AttackChanged fireProperty(String propertyName)
     {
-        return globalControllerPCL.getBiConsumerMap().get(propertyName);
+        return globalControllerPCL.getAttackMap().get(propertyName);
     }
 }

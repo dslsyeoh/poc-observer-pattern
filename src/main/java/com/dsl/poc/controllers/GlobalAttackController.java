@@ -1,10 +1,9 @@
 package com.dsl.poc.controllers;
 
+import com.dsl.poc.AttackChanged;
 import com.dsl.poc.pcl.GlobalControllerListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.function.BiConsumer;
 
 @Component
 class GlobalAttackController
@@ -47,7 +46,7 @@ class GlobalAttackController
         }
     }
 
-    BiConsumer<String, String> get(String propertyName)
+    AttackChanged get(String propertyName)
     {
         return globalControllerListener.fireProperty(propertyName);
     }

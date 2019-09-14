@@ -1,29 +1,29 @@
 package com.dsl.poc.pcl;
 
+import com.dsl.poc.AttackChanged;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 
 public class GlobalControllerPropertyChangeListener implements PropertyChangeListener
 {
-    private Map<String, BiConsumer<String, String>> biConsumerMap = new HashMap<>();
+    private Map<String, AttackChanged> attackChangedMap = new HashMap<>();
 
     @Override
-    @SuppressWarnings("unchecked")
     public void propertyChange(PropertyChangeEvent evt)
     {
-        setRunnableMap(evt.getPropertyName(), (BiConsumer<String, String>)evt.getNewValue());
+        setRunnableMap(evt.getPropertyName(), (AttackChanged)evt.getNewValue());
     }
 
-    private void setRunnableMap(String key, BiConsumer<String, String> biConsumer)
+    private void setRunnableMap(String key, AttackChanged biConsumer)
     {
-        biConsumerMap.put(key, biConsumer);
+        attackChangedMap.put(key, biConsumer);
     }
 
-    Map<String, BiConsumer<String, String>> getBiConsumerMap()
+    Map<String, AttackChanged> getAttackMap()
     {
-        return biConsumerMap;
+        return attackChangedMap;
     }
 }

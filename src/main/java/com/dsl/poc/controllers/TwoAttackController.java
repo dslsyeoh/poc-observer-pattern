@@ -1,5 +1,6 @@
 package com.dsl.poc.controllers;
 
+import com.dsl.poc.AttackChanged;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,11 +23,11 @@ public class TwoAttackController
 
     public void test(String propertyName, String attack, String power)
     {
-        BiConsumer<String, String> biConsumer = get(propertyName);
-        if(Objects.nonNull(biConsumer)) biConsumer.accept(attack, power);
+        AttackChanged attackChanged = get(propertyName);
+        if(Objects.nonNull(attackChanged)) attackChanged.consume(attack, power);
     }
 
-    private BiConsumer<String, String> get(String propertyName)
+    private AttackChanged get(String propertyName)
     {
         return globalAttackController.get(propertyName);
     }
