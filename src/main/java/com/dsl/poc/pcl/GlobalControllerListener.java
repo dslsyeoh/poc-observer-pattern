@@ -2,16 +2,13 @@ package com.dsl.poc.pcl;
 
 import org.springframework.stereotype.Component;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
+import java.util.function.BiConsumer;
 
 @Component
 public class GlobalControllerListener
 {
-    private Map<String, Runnable> runnableMap = new HashMap<>();
     private PropertyChangeSupport support;
     private GlobalControllerPropertyChangeListener globalControllerPCL;
     private boolean isDisableListener;
@@ -28,6 +25,11 @@ public class GlobalControllerListener
         support.addPropertyChangeListener(globalControllerPCL);
     }
 
+    public void removePropertyChangeListener()
+    {
+        support.removePropertyChangeListener(globalControllerPCL);
+    }
+
     public void enablePropertyChangeListener()
     {
         isDisableListener = false;
@@ -38,16 +40,14 @@ public class GlobalControllerListener
         isDisableListener = true;
     }
 
-    public void setFirePropertyChange(String propertyName, Runnable runnable)
+    public void setFirePropertyChange(String propertyName, BiConsumer<String, String> biConsumer)
     {
-        support.firePropertyChange(propertyName, this.runnableMap, runnable);
-        runnableMap.put(propertyName, runnable);
+        support.firePropertyChange(propertyName, null, biConsumer);
     }
 
-    public void fireProperty(String propertyName)
-    {
-        Runnable runnable = globalControllerPCL.getRunnableMap().get(propertyName);
-        if(!isDisableListener && Objects.nonNull(runnable)) runnable.run();
 
+    public BiConsumer<String, String> fireProperty(String propertyName)
+    {
+        return globalControllerPCL.getBiConsumerMap().get(propertyName);
     }
 }

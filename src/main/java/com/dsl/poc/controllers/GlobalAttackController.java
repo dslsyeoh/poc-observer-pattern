@@ -4,56 +4,57 @@ import com.dsl.poc.pcl.GlobalControllerListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.function.BiConsumer;
+
 @Component
 public class GlobalAttackController
 {
     @Autowired
     private GlobalControllerListener globalControllerListener;
 
-    public void addListeners()
+    public void addPropertyChangeListener()
     {
         globalControllerListener.addPropertyChangeListener();
-        globalControllerListener.setFirePropertyChange("handleOnePunch", this::handleOnePunch);
-        globalControllerListener.setFirePropertyChange("handleOneKick", this::handleOneKick);
-        globalControllerListener.setFirePropertyChange("handleTwoPunches", this::handleTwoPunches);
-        globalControllerListener.setFirePropertyChange("handleTwoKicks", this::handleTwoKicks);
-        globalControllerListener.setFirePropertyChange("handleThreePunches", this::handleThreePunches);
-        globalControllerListener.setFirePropertyChange("handleThreeKicks", this::handleThreeKicks);
     }
 
-    private void handleOnePunch()
+    public void registerAttack(String propertyName)
     {
-        System.out.println("one punch for you");
+        globalControllerListener.setFirePropertyChange(propertyName, this::handleAttack);
     }
 
-    private void handleOneKick()
+    private void handleAttack(String attack, String power)
     {
-        System.out.println("one kick for you");
+        identifyAttackLevel(attack, power);
     }
 
-    private void handleTwoPunches()
+    private void identifyAttackLevel(String attack, String power)
     {
-        System.out.println("two punch for you");
+        switch (power)
+        {
+            case "weak":
+                System.out.println(attack + " is a joke");
+                break;
+            case "average":
+                System.out.println(attack + " can kill normal persons");
+            case "pro":
+                System.out.println(attack + " can kill non-professional persons");
+                break;
+            case "disaster":
+                System.out.println(attack + " can destroy humanity");
+                break;
+            default:
+                System.out.println(power + "cannot be identified");
+        }
     }
 
-    private void handleTwoKicks()
+    BiConsumer<String, String> get(String propertyName)
     {
-        System.out.println("two punch for you");
+        return globalControllerListener.fireProperty(propertyName);
     }
 
-    private void handleThreePunches()
+    public void removePropertyChangeListener()
     {
-        System.out.println("three punches for you");
-    }
-
-    private void handleThreeKicks()
-    {
-        System.out.println("three kicks for you");
-    }
-
-    void fire(String propertyName)
-    {
-        globalControllerListener.fireProperty(propertyName);
+        globalControllerListener.removePropertyChangeListener();
     }
 
     public void enableListener()

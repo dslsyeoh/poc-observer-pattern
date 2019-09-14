@@ -1,6 +1,5 @@
 package com.dsl.poc;
 
-import com.dsl.poc.controllers.GlobalAttackController;
 import com.dsl.poc.controllers.OneAttackController;
 import com.dsl.poc.controllers.TripleAttackController;
 import com.dsl.poc.controllers.TwoAttackController;
@@ -14,20 +13,19 @@ public class Main
     public static void main(String[] args)
     {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class);
-        GlobalAttackController globalAttackController = applicationContext.getBean(GlobalAttackController.class);
-        globalAttackController.addListeners();
         OneAttackController oneAttackController = applicationContext.getBean(OneAttackController.class);
-        oneAttackController.fire("handleOnePunch");
-        oneAttackController.fire("handleOneKick");
+        oneAttackController.register();
+        oneAttackController.test("OneAttackController_punch", "one punch", "disaster");
+        oneAttackController.test("OneAttackController_kick", "one kick", "disaster");
 
-        globalAttackController.disableListener();
         TwoAttackController twoAttackController = applicationContext.getBean(TwoAttackController.class);
-        twoAttackController.fire("handleTwoPunches");
-        twoAttackController.fire("handleTwoKicks");
+        twoAttackController.register();
+        twoAttackController.test("TwoAttackController_punch", "two punches", "weak");
+        twoAttackController.test("TwoAttackController_kick", "two kicks", "weak");
 
-        globalAttackController.enableListener();
-        TripleAttackController threePunchController = applicationContext.getBean(TripleAttackController.class);
-        threePunchController.fire("handleThreePunches");
-        threePunchController.fire("handleThreeKicks");
+        TripleAttackController tripleAttackController = applicationContext.getBean(TripleAttackController.class);
+        tripleAttackController.register();
+        tripleAttackController.test("TripleAttackController_punch", "three punches", "average");
+        tripleAttackController.test("TripleAttackController_kick", "three kicks", "average");
     }
 }

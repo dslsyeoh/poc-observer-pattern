@@ -4,29 +4,25 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class GlobalControllerPropertyChangeListener implements PropertyChangeListener
 {
-    private Map<String, Runnable> runnableMap = new HashMap<>();
+    private Map<String, BiConsumer<String, String>> biConsumerMap = new HashMap<>();
 
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
-        setRunnableMap(evt.getPropertyName(), (Runnable) evt.getNewValue());
+        setRunnableMap(evt.getPropertyName(), (BiConsumer<String, String>)evt.getNewValue());
     }
 
-    private void setRunnableMap(String key, Runnable runnable)
+    private void setRunnableMap(String key, BiConsumer<String, String> biConsumer)
     {
-        runnableMap.put(key, runnable);
+        biConsumerMap.put(key, biConsumer);
     }
 
-    Map<String, Runnable> getRunnableMap()
+    Map<String, BiConsumer<String, String>> getBiConsumerMap()
     {
-        return runnableMap;
-    }
-
-    Runnable get(String propertyName)
-    {
-        return getRunnableMap().get(propertyName);
+        return biConsumerMap;
     }
 }
