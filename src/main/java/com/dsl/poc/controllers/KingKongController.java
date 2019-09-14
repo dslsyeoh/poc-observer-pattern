@@ -23,7 +23,7 @@ public class KingKongController
     public void test(String propertyName, String attack, String power)
     {
         Attacker attacker = get(propertyName);
-        if (Objects.nonNull(attacker)) attacker.consume("King Kong", attack, power);
+        if (Objects.nonNull(attacker)) attacker.register("King Kong", attack, power);
     }
 
     private Attacker get(String propertyName)

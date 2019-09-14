@@ -23,7 +23,7 @@ public class ProWrestlerController
     public void test(String propertyName, String attack, String power)
     {
         Attacker attacker = get(propertyName);
-        if (Objects.nonNull(attacker)) attacker.consume("Pro wrestler", attack, power);
+        if (Objects.nonNull(attacker)) attacker.register("Pro wrestler", attack, power);
     }
 
     private Attacker get(String propertyName)

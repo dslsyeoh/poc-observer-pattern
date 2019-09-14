@@ -23,7 +23,7 @@ public class OnePunchManController
     public void test(String propertyName, String attack, String power)
     {
         Attacker attacker = get(propertyName);
-        if (Objects.nonNull(attacker)) attacker.consume("OPM", attack, power);
+        if (Objects.nonNull(attacker)) attacker.register("OPM", attack, power);
     }
 
     private Attacker get(String propertyName)
