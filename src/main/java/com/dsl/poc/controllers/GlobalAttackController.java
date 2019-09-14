@@ -35,6 +35,7 @@ class GlobalAttackController
                 break;
             case "average":
                 System.out.println(attack + " can kill normal persons");
+                break;
             case "pro":
                 System.out.println(attack + " can kill non-professional persons");
                 break;
