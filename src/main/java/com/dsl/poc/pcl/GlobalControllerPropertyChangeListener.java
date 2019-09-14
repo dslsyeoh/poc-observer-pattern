@@ -14,10 +14,10 @@ public class GlobalControllerPropertyChangeListener implements PropertyChangeLis
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
-        setRunnableMap(evt.getPropertyName(), (AttackChanged)evt.getNewValue());
+        setAttackChangedMap(evt.getPropertyName(), (AttackChanged)evt.getNewValue());
     }
 
-    private void setRunnableMap(String key, AttackChanged biConsumer)
+    private void setAttackChangedMap(String key, AttackChanged biConsumer)
     {
         attackChangedMap.put(key, biConsumer);
     }
