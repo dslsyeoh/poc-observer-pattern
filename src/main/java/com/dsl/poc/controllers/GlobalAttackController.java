@@ -29,16 +29,19 @@ class GlobalAttackController
                 System.out.println(attack + " is a joke");
                 break;
             case "average":
-                System.out.println(attack + " can kill normal persons");
+                System.out.println(attack + " can kill normal person");
                 break;
-            case "pro":
-                System.out.println(attack + " can kill non-professional persons");
+            case "hard":
+                System.out.println(attack + " can kill any person");
+                break;
+            case "extreme hard":
+                System.out.println(attack + " can destroy town");
                 break;
             case "disaster":
                 System.out.println(attack + " can destroy humanity");
                 break;
             default:
-                System.out.println(power + "cannot be identified");
+                System.out.println(power + " cannot be identified");
                 break;
         }
     }
