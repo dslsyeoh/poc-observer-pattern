@@ -1,6 +1,6 @@
 package com.dsl.poc.controllers;
 
-import com.dsl.poc.AttackChanged;
+import com.dsl.poc.Attacker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,11 +22,11 @@ public class KingKongController
 
     public void test(String propertyName, String attack, String power)
     {
-        AttackChanged attackChanged = get(propertyName);
-        if (Objects.nonNull(attackChanged)) attackChanged.consume(attack, power);
+        Attacker attacker = get(propertyName);
+        if (Objects.nonNull(attacker)) attacker.consume("King Kong", attack, power);
     }
 
-    private AttackChanged get(String propertyName)
+    private Attacker get(String propertyName)
     {
         return globalAttackController.get(propertyName);
     }

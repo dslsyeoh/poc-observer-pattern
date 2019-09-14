@@ -1,6 +1,6 @@
 package com.dsl.poc.pcl;
 
-import com.dsl.poc.AttackChanged;
+import com.dsl.poc.Attacker;
 import org.springframework.stereotype.Component;
 
 import java.beans.PropertyChangeSupport;
@@ -27,12 +27,12 @@ public class GlobalControllerListener
         support.removePropertyChangeListener(globalControllerPCL);
     }
 
-    public void setFirePropertyChange(String propertyName, AttackChanged attackChanged)
+    public void setFirePropertyChange(String propertyName, Attacker attacker)
     {
-        support.firePropertyChange(propertyName, null, attackChanged);
+        support.firePropertyChange(propertyName, null, attacker);
     }
 
-    public AttackChanged fireProperty(String propertyName)
+    public Attacker fireProperty(String propertyName)
     {
         return globalControllerPCL.getAttackMap().get(propertyName);
     }

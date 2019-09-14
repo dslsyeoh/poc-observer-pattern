@@ -1,6 +1,6 @@
 package com.dsl.poc.pcl;
 
-import com.dsl.poc.AttackChanged;
+import com.dsl.poc.Attacker;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -9,20 +9,20 @@ import java.util.Map;
 
 public class GlobalControllerPropertyChangeListener implements PropertyChangeListener
 {
-    private Map<String, AttackChanged> attackChangedMap = new HashMap<>();
+    private Map<String, Attacker> attackChangedMap = new HashMap<>();
 
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
-        setAttackChangedMap(evt.getPropertyName(), (AttackChanged) evt.getNewValue());
+        setAttackChangedMap(evt.getPropertyName(), (Attacker) evt.getNewValue());
     }
 
-    private void setAttackChangedMap(String key, AttackChanged attackChanged)
+    private void setAttackChangedMap(String key, Attacker attacker)
     {
-        attackChangedMap.put(key, attackChanged);
+        attackChangedMap.put(key, attacker);
     }
 
-    Map<String, AttackChanged> getAttackMap()
+    Map<String, Attacker> getAttackMap()
     {
         return attackChangedMap;
     }
