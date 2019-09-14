@@ -3,7 +3,6 @@ package com.dsl.poc.pcl;
 import org.springframework.stereotype.Component;
 
 import java.beans.PropertyChangeSupport;
-import java.util.Objects;
 import java.util.function.BiConsumer;
 
 @Component
@@ -11,7 +10,6 @@ public class GlobalControllerListener
 {
     private PropertyChangeSupport support;
     private GlobalControllerPropertyChangeListener globalControllerPCL;
-    private boolean isDisableListener;
 
     private GlobalControllerListener()
     {
@@ -21,7 +19,6 @@ public class GlobalControllerListener
 
     public void addPropertyChangeListener()
     {
-        isDisableListener = false;
         support.addPropertyChangeListener(globalControllerPCL);
     }
 
@@ -30,21 +27,10 @@ public class GlobalControllerListener
         support.removePropertyChangeListener(globalControllerPCL);
     }
 
-    public void enablePropertyChangeListener()
-    {
-        isDisableListener = false;
-    }
-
-    public void disablePropertyChangeListener()
-    {
-        isDisableListener = true;
-    }
-
     public void setFirePropertyChange(String propertyName, BiConsumer<String, String> biConsumer)
     {
         support.firePropertyChange(propertyName, null, biConsumer);
     }
-
 
     public BiConsumer<String, String> fireProperty(String propertyName)
     {

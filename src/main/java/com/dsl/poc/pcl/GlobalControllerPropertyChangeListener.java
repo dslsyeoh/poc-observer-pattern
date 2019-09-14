@@ -11,6 +11,7 @@ public class GlobalControllerPropertyChangeListener implements PropertyChangeLis
     private Map<String, BiConsumer<String, String>> biConsumerMap = new HashMap<>();
 
     @Override
+    @SuppressWarnings("unchecked")
     public void propertyChange(PropertyChangeEvent evt)
     {
         setRunnableMap(evt.getPropertyName(), (BiConsumer<String, String>)evt.getNewValue());

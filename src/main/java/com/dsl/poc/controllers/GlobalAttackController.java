@@ -7,17 +7,17 @@ import org.springframework.stereotype.Component;
 import java.util.function.BiConsumer;
 
 @Component
-public class GlobalAttackController
+class GlobalAttackController
 {
     @Autowired
     private GlobalControllerListener globalControllerListener;
 
-    public void addPropertyChangeListener()
+    void addPropertyChangeListener()
     {
         globalControllerListener.addPropertyChangeListener();
     }
 
-    public void registerAttack(String propertyName)
+    void registerAttack(String propertyName)
     {
         globalControllerListener.setFirePropertyChange(propertyName, this::handleAttack);
     }
@@ -52,18 +52,8 @@ public class GlobalAttackController
         return globalControllerListener.fireProperty(propertyName);
     }
 
-    public void removePropertyChangeListener()
+    void removePropertyChangeListener()
     {
         globalControllerListener.removePropertyChangeListener();
-    }
-
-    public void enableListener()
-    {
-        globalControllerListener.enablePropertyChangeListener();
-    }
-
-    public void disableListener()
-    {
-        globalControllerListener.disablePropertyChangeListener();
     }
 }
