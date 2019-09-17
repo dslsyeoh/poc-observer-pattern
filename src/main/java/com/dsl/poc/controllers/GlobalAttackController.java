@@ -44,7 +44,7 @@ class GlobalAttackController
                 System.out.println(format(name, attack, "can destroy any creature"));
                 break;
             default:
-                System.out.println(format(name, attack, "power not registered."));
+                System.out.println(format(name, attack, "not registered."));
                 break;
         }
     }
