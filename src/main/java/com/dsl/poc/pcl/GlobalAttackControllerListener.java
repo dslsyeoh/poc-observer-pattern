@@ -9,22 +9,22 @@ import java.beans.PropertyChangeSupport;
 public class GlobalAttackControllerListener
 {
     private PropertyChangeSupport support;
-    private GlobalAttackControllerPCL globalControllerPCL;
+    private GlobalAttackControllerPCL globalAttackControllerPCL;
 
     private GlobalAttackControllerListener()
     {
         support = new PropertyChangeSupport(this);
-        globalControllerPCL = new GlobalAttackControllerPCL();
+        globalAttackControllerPCL = new GlobalAttackControllerPCL();
     }
 
     public void addPropertyChangeListener()
     {
-        support.addPropertyChangeListener(globalControllerPCL);
+        support.addPropertyChangeListener(globalAttackControllerPCL);
     }
 
     public void removePropertyChangeListener()
     {
-        support.removePropertyChangeListener(globalControllerPCL);
+        support.removePropertyChangeListener(globalAttackControllerPCL);
     }
 
     public void setFirePropertyChange(String propertyName, Attacker attacker)
@@ -34,6 +34,6 @@ public class GlobalAttackControllerListener
 
     public Attacker fireProperty(String propertyName)
     {
-        return globalControllerPCL.getAttackMap().get(propertyName);
+        return globalAttackControllerPCL.getAttackMap().get(propertyName);
     }
 }
