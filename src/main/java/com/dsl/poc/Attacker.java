@@ -2,5 +2,5 @@ package com.dsl.poc;
 
 public interface Attacker
 {
-    void register(String name, String attack, String power);
+    void register(String name, String attack, int attackPower);
 }

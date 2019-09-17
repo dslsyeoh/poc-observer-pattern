@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 @Component
-public class OnePunchManController
+public class NormalPersonController
 {
     @Autowired
     private GlobalAttackController globalAttackController;
@@ -20,10 +20,10 @@ public class OnePunchManController
         globalAttackController.removePropertyChangeListener();
     }
 
-    public void test(String propertyName, String attack, String power)
+    public void test(String propertyName, String attack, int attackRank)
     {
         Attacker attacker = get(propertyName);
-        if (Objects.nonNull(attacker)) attacker.register("OPM", attack, power);
+        if (Objects.nonNull(attacker)) attacker.register("Normal guy", attack, attackRank);
     }
 
     private Attacker get(String propertyName)

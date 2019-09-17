@@ -20,10 +20,10 @@ public class ProWrestlerController
         globalAttackController.removePropertyChangeListener();
     }
 
-    public void test(String propertyName, String attack, String power)
+    public void test(String propertyName, String attack, int attackRank)
     {
         Attacker attacker = get(propertyName);
-        if (Objects.nonNull(attacker)) attacker.register("Pro wrestler", attack, power);
+        if (Objects.nonNull(attacker)) attacker.register("Pro wrestler", attack, attackRank);
     }
 
     private Attacker get(String propertyName)

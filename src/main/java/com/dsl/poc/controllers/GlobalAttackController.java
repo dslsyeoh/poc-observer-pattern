@@ -21,27 +21,30 @@ class GlobalAttackController
         globalControllerListener.setFirePropertyChange(propertyName, this::identifyAttackLevel);
     }
 
-    private void identifyAttackLevel(String name, String attack, String power)
+    private void identifyAttackLevel(String name, String attack, int attackRank)
     {
-        switch (power)
+        switch (attackRank)
         {
-            case "weak":
+            case 0:
                 System.out.println(format(name, attack, "is a joke"));
                 break;
-            case "average":
-                System.out.println(format(name, attack, "kill normal person"));
+            case 1:
+                System.out.println(format(name, attack, "can hurt normal person"));
                 break;
-            case "hard":
-                System.out.println(format(name, attack, "kill any person"));
+            case 2:
+                System.out.println(format(name, attack, "can kill normal person"));
                 break;
-            case "extreme hard":
+            case 3:
+                System.out.println(format(name, attack, "can kill any person"));
+                break;
+            case 4:
                 System.out.println(format(name, attack, "can destroy town"));
                 break;
-            case "disaster":
+            case 5:
                 System.out.println(format(name, attack, "can destroy any creature"));
                 break;
             default:
-                System.out.println(format(name, attack, "cannot be identified"));
+                System.out.println(format(name, attack, "power not registered."));
                 break;
         }
     }
