@@ -7,7 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GlobalControllerPropertyChangeListener implements PropertyChangeListener
+public class GlobalAttackControllerPCL implements PropertyChangeListener
 {
     private Map<String, Attacker> attackChangedMap = new HashMap<>();
 

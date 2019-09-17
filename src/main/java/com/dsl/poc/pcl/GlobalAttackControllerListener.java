@@ -6,15 +6,15 @@ import org.springframework.stereotype.Component;
 import java.beans.PropertyChangeSupport;
 
 @Component
-public class GlobalControllerListener
+public class GlobalAttackControllerListener
 {
     private PropertyChangeSupport support;
-    private GlobalControllerPropertyChangeListener globalControllerPCL;
+    private GlobalAttackControllerPCL globalControllerPCL;
 
-    private GlobalControllerListener()
+    private GlobalAttackControllerListener()
     {
         support = new PropertyChangeSupport(this);
-        globalControllerPCL = new GlobalControllerPropertyChangeListener();
+        globalControllerPCL = new GlobalAttackControllerPCL();
     }
 
     public void addPropertyChangeListener()

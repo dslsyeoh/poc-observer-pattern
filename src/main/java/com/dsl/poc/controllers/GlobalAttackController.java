@@ -1,7 +1,7 @@
 package com.dsl.poc.controllers;
 
 import com.dsl.poc.Attacker;
-import com.dsl.poc.pcl.GlobalControllerListener;
+import com.dsl.poc.pcl.GlobalAttackControllerListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 class GlobalAttackController
 {
     @Autowired
-    private GlobalControllerListener globalControllerListener;
+    private GlobalAttackControllerListener globalAttackControllerListener;
 
     void addPropertyChangeListener()
     {
-        globalControllerListener.addPropertyChangeListener();
+        globalAttackControllerListener.addPropertyChangeListener();
     }
 
     void registerAttack(String propertyName)
     {
-        globalControllerListener.setFirePropertyChange(propertyName, this::identifyAttackLevel);
+        globalAttackControllerListener.setFirePropertyChange(propertyName, this::identifyAttackLevel);
     }
 
     private void identifyAttackLevel(String name, String attack, int attackRank)
@@ -56,11 +56,11 @@ class GlobalAttackController
 
     Attacker get(String propertyName)
     {
-        return globalControllerListener.fireProperty(propertyName);
+        return globalAttackControllerListener.fireProperty(propertyName);
     }
 
     void removePropertyChangeListener()
     {
-        globalControllerListener.removePropertyChangeListener();
+        globalAttackControllerListener.removePropertyChangeListener();
     }
 }
